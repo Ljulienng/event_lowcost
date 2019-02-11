@@ -6,6 +6,6 @@ class Attendance < ApplicationRecord
 
 
 	def new_user
-		UserMailer.user_joined_email(self).deliver_now
+		AttendanceMailer.user_joined_email(self).deliver_now
 	end
 end

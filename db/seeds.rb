@@ -8,6 +8,7 @@
 
 User.destroy_all
 Event.destroy_all
+Attendance.destroy_all
 
 10.times do
   User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, email: Faker::Internet.unique.email, description: Faker::Lebowski.unique.quote)
@@ -15,4 +16,8 @@ end
 
 10.times do
 	Event.create!(start_date: rand(2.months).seconds.from_now, duration: (rand(0..25)*5), price: rand(1..1000), title: "test#{rand(50)}", location: Faker::GameOfThrones.city, description: Faker::Lebowski.unique.quote * 2 , admin_id: User.all.sample.id)
+end
+
+5.times do
+	Attendance.create!(event: Event.all.sample, user: User.all.sample)
 end
