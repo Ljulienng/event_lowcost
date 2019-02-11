@@ -31,7 +31,7 @@ class Event < ApplicationRecord
 
 
   def multiple_of_5
-   errors.add(:duration, "must be a mutiple of 5") unless self.duration % 5 == 0
+  	errors.add(:duration, "must be a mutiple of 5") unless self.duration % 5 == 0
   end
 
   def future_date
