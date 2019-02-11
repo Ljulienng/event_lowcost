@@ -3,7 +3,7 @@ class CreateAttendances < ActiveRecord::Migration[5.2]
     create_table :attendances do |t|
     	t.string :stripe_customer_id
     	t.references :user, index: true
-    	t.references :event, foreign_key: true
+    	t.references :event, index: true
     end
   end
 end
