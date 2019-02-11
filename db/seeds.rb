@@ -15,7 +15,7 @@ Attendance.destroy_all
 end
 
 10.times do
-	Event.create!(start_date: rand(2.months).seconds.from_now, duration: (rand(0..25)*5), price: rand(1..1000), title: "test#{rand(50)}", location: Faker::GameOfThrones.city, description: Faker::Lebowski.unique.quote * 2 , admin_id: User.all.sample.id)
+	Event.create!(start_date: rand(2.months).seconds.from_now, duration: (rand(1..25)*5), price: rand(1..1000), title: "test#{rand(50)}", location: Faker::GameOfThrones.city, description: Faker::Lebowski.unique.quote * 2 , admin_id: User.all.sample.id)
 end
 
 5.times do
