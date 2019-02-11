@@ -3,7 +3,10 @@ class Event < ApplicationRecord
 	has_many :users, through: :attendances
 	belongs_to :admin, class_name: "User"
 
-	validates :start_date,presence: true
+	validates :start_date,
+		presence: true,
+
+
 
 	validates :duration,
 		presence: true,
@@ -25,12 +28,5 @@ class Event < ApplicationRecord
 	validates :location, presence: true
 
 
-  def multiple_of_5
-    if duration % 5 == 0
-      return true
-    else  
-      return false
-    end
-  end
 
 end
