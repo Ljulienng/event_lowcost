@@ -42,5 +42,4 @@ ActiveRecord::Schema.define(version: 2019_02_11_100840) do
     t.string "last_name"
   end
 
-  add_foreign_key "attendances", "events"
 end
