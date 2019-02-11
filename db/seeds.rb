@@ -11,7 +11,7 @@ Event.destroy_all
 Attendance.destroy_all
 
 10.times do
-  User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, email: Faker::Internet.unique.email, description: Faker::Lebowski.unique.quote)
+  User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, description: Faker::Lebowski.unique.quote)
 end
 
 10.times do
