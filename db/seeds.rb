@@ -11,13 +11,13 @@ Event.destroy_all
 Attendance.destroy_all
 
 10.times do
-  user = User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, description: Faker::Lebowski.unique.quote)
+  user = User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, description: Faker::Movies::Lebowski.unique.quote, email: "#{Faker::Name.unique.last_name}@yopmail.com", password: "123456" )
 end
 
 10.times do
-	Event.create!(start_date: rand(2.months).seconds.from_now, duration: (rand(1..25)*5), price: rand(1..1000), title: "test#{rand(50)}", location: Faker::GameOfThrones.city, description: Faker::Lebowski.unique.quote * 2 , admin_id: User.all.sample.id)
+	Event.create!(start_date: rand(2.months).seconds.from_now, duration: (rand(1..25)*5), price: rand(1..1000), title: "test#{rand(50)}", location: Faker::TvShows::GameOfThrones.city, description: Faker::Movies::Lebowski.unique.quote * 2 , admin_id: User.all.sample.id)
 end
 
-5.times do
-	attendance = Attendance.create!(event: Event.all.sample, user: User.all.sample)
-end
+# 5.times do
+# 	attendance = Attendance.create!(event: Event.all.sample, user: User.all.sample)
+# end
