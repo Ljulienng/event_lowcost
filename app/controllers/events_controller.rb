@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :new, :create]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :create]
+  before_action :correct_user, only: [:edit, :update]
 
   # GET /events
   # GET /events.json
@@ -26,10 +26,11 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.admin = current_user
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to event_path(@event.id), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -71,5 +72,10 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.fetch(:event, {})
+    end
+
+    def correct_user 
+      @user = User.find(current_user.id)
+      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
     end
 end
