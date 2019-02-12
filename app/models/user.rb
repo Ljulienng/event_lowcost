@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
 	has_many :attendances
 	has_many :events, through: :attendances
+  has_many :events_created, foreign_key: 'admin_id', class_name: "Event"
 
 
 	def welcome_send
