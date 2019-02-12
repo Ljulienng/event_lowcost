@@ -11,7 +11,7 @@ Event.destroy_all
 Attendance.destroy_all
 
 10.times do
-  User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, description: Faker::Lebowski.unique.quote)
+  user = User.create!(first_name: Faker::Name.unique.first_name,last_name: Faker::Name.last_name, description: Faker::Lebowski.unique.quote)
 end
 
 10.times do
@@ -19,5 +19,5 @@ end
 end
 
 5.times do
-	Attendance.create!(event: Event.all.sample, user: User.all.sample)
+	attendance = Attendance.create!(event: Event.all.sample, user: User.all.sample)
 end
