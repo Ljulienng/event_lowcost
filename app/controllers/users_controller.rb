@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   private
 
     def correct_user 
@@ -36,6 +37,15 @@ class UsersController < ApplicationController
 
 
 
+=======
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def new
+      @user = User.new  
+  end
+>>>>>>> 6784b63a26437d60cbef3235c362b85497bb8def
 end
 
 
