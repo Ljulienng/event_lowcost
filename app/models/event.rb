@@ -31,12 +31,14 @@ class Event < ApplicationRecord
 	validates :location, presence: true
 
 
+	private 
+
   def multiple_of_5
-  	errors.add(:duration, "must be a mutiple of 5") unless self.duration % 5 == 0
+  	errors.add(:duration, "must be a mutiple of 5") unless self.duration.to_i % 5 == 0
   end
 
-  def future_date
-  	errors.add(:start_date, "can't be in the past") if self.start_date < DateTime.now
+	def future_date
+    errors.add(:start_date, "Must be before end time") unless start_date.present? && start_date > Date.today
   end
 
 end
