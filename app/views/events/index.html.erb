@@ -1,12 +1,100 @@
 
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+<div class="container w-75 mt-4">
+  <div style ="text-align: center">
+    <div style = "text-align: center">
+        <h2 class="text-center text-primary">The Events </h2>
+        <p class="text-secondary">Here you'll find all the events organized by people.</p>
+  </div>
+    </div>
+  <div class ="boxes">
+          <% if user_signed_in? %>
+
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">User signed up</h5>
+              <p class="card-text">There is currently <span class= "text-danger"><%= User.all.count %> members</span> on EventLite</p>
+            </div>
+          </div>
+
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event Created</h5>
+              <p class="card-text">There is currently <span class= "text-danger"><%= Event.all.count %> events</span> on EventLite</p>
+              <a href="<%new_event_path%>" class="btn btn-primary">New event</a>
+            </div>
+          </div>
+
+          <% else %>
+
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">User signed up</h5>
+              <p class="card-text">There is currently <span class= "text-danger"><%= User.all.count %> members</span> on EventLite</p>
+              <a href="<%new_user_registration_path%>" class="btn btn-primary">Join us !</a>
+            </div>
+          </div>
+
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event Created</h5>
+              <p class="card-text">There is currently <span class= "text-danger"><%= Event.all.count %> events</span> on EventLite</p>
+            </div>
+          </div>
+          
+          <%end%>
+  </div>
+</div>
 
 
 
+<div class="d-flex justify-content-center">
+  <section class="w-75 table-responsive">
+    <table id="test" class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Organizer <i class="fas fa-sort ml-2"></i></th>
+          <th scope="col">Start date <i class="fas fa-sort ml-2"></i></th>
+          <th scope="col">Title <i class="fas fa-sort ml-2"></i></th>
+          <th scope="col">Ville <i class="fas fa-sort ml-2"></i></th>
+          <th scope="col" class="text-center"><i class="fas fa-sort ml-2"></th>
+          <th scope="col" class="text-center"><i class="fas fa-sort ml-2"></th>
+          <th scope="col" class="text-center"></th>
+        </tr>
+      </thead>
+      <tbody >
+      <% Event.all.each do |event| %>
+        <tr>
+          <th scope="row" data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1"><%= event.id %></th>
+
+          <td><%= link_to "#{event.admin.first_name}"%></td>
+
+          <td><%= event.start_date %></td>
+
+          <td class="font-italic">
+            <a href="<%= event_path(event.id) %>"><%= event.title %></a> 
+          </td>
+
+          <td><%= event.admin.last_name %></td>
+
+          <td  class="text-center">
+              <a class="text-decoration-none" href="<%= event_path(event.id) %>"><i class="far fa-comments "></i></a> 
+          </td>  
+
+          <td  class="text-center">
+              <a class="text-decoration-none" href="<%= event_path(event.id) %>"><i class="far fa-eye"></i></a> 
+              <% if user_signed_in? && current_user.id == event.admin.id %>
+              <a  href="<%= edit_event_path(event.id) %>"><i class="mr-3 ml-3 fas fa-pencil-alt"></i> </a>
+              <a href="<%= event_path(event.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE"><i class="fas fa-trash-alt"></i></a>
+              <% else %>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+
+  </section>
+</div>
 
