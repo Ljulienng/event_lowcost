@@ -19,7 +19,14 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def new
+      @user = User.new  
+  end
+
   private
 
     def correct_user 
@@ -34,19 +41,6 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(current_user.id)
     end
-
-
-
-
-=======
-  def edit
-    @user = User.find(current_user.id)
-  end
-
-  def new
-      @user = User.new  
-  end
->>>>>>> 6784b63a26437d60cbef3235c362b85497bb8def
 end
 
 
