@@ -13,4 +13,12 @@ class UsersController < ApplicationController
       render :show
     end
   end
+
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def new
+      @user = User.new  
+  end
 end
