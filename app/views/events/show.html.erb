@@ -8,7 +8,7 @@
     <p class="card-text"><u>Number of guests</u> : <%= @event.users.count %></p>
     <p class="card-text"><u>email</u> : <%= User.find(@event.admin_id).email %></p>
     <p class="card-text"><u>Start</u> : <%= @event.start_date %></p>
-    <p class="card-text"><u>End</u> : <%= @event.end_date %></p>
+    <p class="card-text"><u>End</u> : <%= end_date %></p>
     <p class="card-text"><u>Location</u> : <%= @event.location %></p>
     <p class="card-text"><u>Price</u> : <%= @event.price %></p>
     <p class="card-text"><%= @event.description %></p>

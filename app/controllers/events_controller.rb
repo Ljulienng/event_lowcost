@@ -66,12 +66,7 @@ class EventsController < ApplicationController
     end
   end
   
-  def end_date
-    @event = Event.find(params[:id])
-    ((@event.duration / 60)+0.5).to_i = k
-    end_daate = @event.start_date + k.hour
-    return end_daate
-  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
