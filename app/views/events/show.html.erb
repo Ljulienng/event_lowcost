@@ -15,12 +15,15 @@
     <p class="card-text"><%= @event.description %></p>
   </div>
   <div class = "card-footer">
+    <%= link_to 'Back', events_path, class: 'btn btn-primary' %> |
+
     <% if current_user.id == Event.find(params[:id]).admin.id %>
-     <%= link_to 'Event space', event_attendances_path(params[:id]), class: "btn btn-success"%> |
-     <%= link_to 'Back', events_path, class: 'btn btn-primary' %>
+     <%= link_to 'Event space', event_attendances_path(params[:id]), class: "btn btn-success"%> 
+    <% elsif current_user.is_participant?(@event)%>
     <% else %>
-      <%= link_to 'Back', events_path, class: 'btn btn-primary' %>
-    <% end %>
+      <%= link_to "Join the event", new_event_attendance_path(params[:id]), :class => "btn btn-info" %>
+        
+    <% end %> 
 
 
   </div>
