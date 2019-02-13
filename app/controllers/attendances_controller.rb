@@ -1,7 +1,6 @@
 class AttendancesController < ApplicationController
-  def new
-  end
 
-  def edit
-  end
+	def index
+		@attendances = Attendance.all
+	end
 end
