@@ -1,1 +1,29 @@
-UsersController#edit is missing a template for this request format and variant. request.formats: ["text/html"] request.variant: [] NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+<h2 class="text-center"><u><strong>Personnal Info</strong></u></h2>
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+    <div class="card-body text-info">
+      <div class="form-group">
+        <%= label_tag 'Prénom'%>
+        <%= text_field_tag :first_name, @user.first_name, class:'form-control', placeholder: @user.first_name %>
+        <br /> <br />
+
+        <%= label_tag 'Nom' %>
+        <%= text_field_tag :last_name, @user.last_name, class:'form-control', placeholder: @user.last_name %>
+        <br /> <br />
+
+        <%= label_tag 'Bio' %>
+        <%= text_area_tag :description, @user.description, class:'form-control', placeholder: @user.description %>
+        <br /> <br />
+
+        <%= label_tag 'Email' %>
+        <%= text_field_tag :email, @user.email, class:'form-control', placeholder: @user.email %>
+        <br /> <br />
+
+        <%= submit_tag "Envoyer", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+
+</div>
+</div>
