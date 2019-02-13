@@ -10,7 +10,7 @@
           <br /> <br />
 
           <%= label_tag 'Nom' %>
-          <%= text_area_tag :last_name, @user.last_name, class:'form-control', placeholder: @user.last_name %>
+          <%= text_field_tag :last_name, @user.last_name, class:'form-control', placeholder: @user.last_name %>
           <br /> <br />
 
           <%= label_tag 'Bio' %>
@@ -35,9 +35,9 @@
       <%= link_to "Edit Profile", edit_user_path, :class => "btn btn-primary"%>
     </div>
   </div>
-  <h2>Events Created</h2>
+  <h2><u><strong>Events Created</strong></u></h2>
     <% @user.events_created.each do |f|%>
-    <div class="card text-center" style="width: 18rem;">
+    <div class="card text-center ml-0" style="width: 18rem;">
         <h5 class="card-header"><%= f.title %></h5>
       <div class="card-body">
         <h5 class="card-title"><%= f.start_date %></h5>
