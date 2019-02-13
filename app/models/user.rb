@@ -20,8 +20,8 @@ class User < ApplicationRecord
 	end
 		
 	def is_participant?(event)
-		attendance = Attendance.where(event_id: event.id)
-		attendance.each do |attendance|
+		attendances = Attendance.where(event_id: event.id)
+		attendances.each do |attendance|
 			if self.id.to_i == attendance.user_id.to_i
 				return true			
 			end
