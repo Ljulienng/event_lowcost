@@ -1,0 +1,2 @@
+class IntendancesController < ApplicationController
+end
