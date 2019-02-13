@@ -13,7 +13,7 @@ Attendance.destroy_all
 54.times do
   user = User.create!(first_name: Faker::Name.unique.first_name,
   										last_name: Faker::Name.last_name, 
-  										description: Faker::Movies::Lebowski.unique.quote, 
+  										description: Faker::Movies::Lebowski.quote, 
   										email: "#{Faker::Name.unique.last_name}@yopmail.com", password: "123456" )
 end
 
@@ -23,7 +23,7 @@ end
 											price: rand(1..1000), 
 											title: Faker::Book.unique.title, 
 											location: Faker::TvShows::GameOfThrones.city, 
-											description: Faker::Movies::Lebowski.unique.quote * 2,admin_id: User.all.sample.id)
+											description: Faker::Movies::Lebowski.quote * 2,admin_id: User.all.sample.id)
 	while event.title.length < 4
 		event.title = Faker::Book.title
 	end
