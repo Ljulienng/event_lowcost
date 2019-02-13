@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
-  before_action :correct_user, only: [:edit, :update]
-  
-  before_action :admin_user, only: [:index, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit]
 
   def show
     @user = User.find(current_user.id)
@@ -24,19 +22,17 @@ class UsersController < ApplicationController
   end
 
   def new
-      @user = User.new  
+    @user = User.new  
   end
 
   private
 
     def correct_user 
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
+      unless current_user.id.to_i == params[:id].to_i
+        redirect_to rooth_path
+      end
     end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
 
     def set_user
       @user = User.find(current_user.id)
