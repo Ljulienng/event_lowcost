@@ -25,27 +25,27 @@
        <%= form_for @event, url: {action: 'create'} do |event| %>
 
         <%= label_tag 'Title' %>
-        <%= event.text_field :title, :class => "form-control" %>
+        <%= event.text_field :title, :class => "form-control", placeholder: "Title of the event" %>
         <br />
 
         <%= label_tag 'Description' %>
-        <%= event.text_field :description, :class => "form-control" %>
+        <%= event.text_field :description, :class => "form-control", placeholder: "Description" %>
         <br />
 
         <%= label_tag 'Location' %>
-        <%= event.text_field :location, :class => "form-control" %>
+        <%= event.text_field :location, :class => "form-control", placeholder: "Location" %>
         <br />
 
         <%= label_tag 'Start date' %>
-        <%= event.text_field :start_date, :class => "form-control" %>
+        <%= event.text_field :start_date, :class => "form-control", placeholder: "Start date (dd/mm/yyyy)" %>
         <br />
 
         <%= label_tag 'Duration' %>
-        <%= event.text_field :duration, :class => "form-control" %>
+        <%= event.text_field :duration, :class => "form-control", placeholder:"Duration (Only multiples of 5)" %>
         <br />
 
         <%= label_tag 'Price' %>
-        <%= event.text_field :price, :class => "form-control" %>
+        <%= event.text_field :price, :class => "form-control", placeholder: "price (maximum: 1000$)" %>
         <br /> <br />
 
         <%= submit_tag "Create event", :class => "btn btn-dark" %>
