@@ -16,7 +16,7 @@
   </div>
   <div class = "card-footer">
     <% if current_user.id == Event.find(params[:id]).admin.id %>
-     <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-success"%> |
+     <%= link_to 'Event space', event_attendances_path(params[:id]), class: "btn btn-success"%> |
      <%= link_to 'Back', events_path, class: 'btn btn-primary' %>
     <% else %>
       <%= link_to 'Back', events_path, class: 'btn btn-primary' %>

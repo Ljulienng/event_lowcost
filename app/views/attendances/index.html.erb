@@ -1,0 +1,41 @@
+<h1 style="text-align:center">My event space</h1>
+
+<h2 style="text-align: center">"<%=Event.find(params[:event_id]).title%>"</h2>
+
+<h3 style="text-align: center">There is currently <span class="text-danger"><%=@attendances.count%><i class="fas fa-user"></i></span> attendees for your event.</h3>
+
+<div class="d-flex justify-content-center mt-5">
+  <section class="w-75 table-responsive">
+    <table id="test" class="table table-bordered table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">first_name <i class="fas fa-sort ml-2"></i></th>
+          <th scope="col">last_name<i class="fas fa-sort ml-2"></i></th>
+          <th scope="col">email <i class="fas fa-sort ml-2"></i></th>
+        </tr>
+      </thead>
+      <tbody >
+      <% @attendances.each do |attendee| %>
+        <tr>
+          <th scope="row" data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1"><%= attendee.id %></th>
+
+          <td><%=attendee.user.first_name%></td>
+
+          <td><%= attendee.user.last_name %></td>
+
+          <td><%= attendee.user.email %></td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+    <div style="text-align: center">  
+    <%= link_to 'Edit event', edit_event_path(params[:event_id]), class: "btn btn-success btn-lg mb-2 mr-1"%>  |    
+    <a class="btn btn-danger btn-lg mb-2 ml-1" href="<%= event_path(params[:event_id]) %>" data-confirm="Are you sure ?" data-method="DELETE">Delete event  </a>
+      
+    </div>
+  
+
+  </section>
+</div>
