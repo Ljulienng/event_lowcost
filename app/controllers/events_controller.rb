@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create]
   before_action :set_event, only: [:show]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_organizer, only: [:edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -82,8 +82,9 @@ class EventsController < ApplicationController
       params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
     end
 
-    def correct_user 
+    def correct_organizer
       @user = User.find(current_user.id)
-      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
+      @event = Event.find(params[:id])
+      redirect_to(root_url) unless current_user.id == @event.admin.id
     end
 end
