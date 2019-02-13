@@ -16,8 +16,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "associations" do
-    it { expect(@user).to have_many(:attendances).with_foreign_key(:user_id) }
-    it { expect(@user).to have_many(:events).through(:attendances) }
-  end
+  # context "associations" do
+  #   it { expect(@user).to have_many(:attendances).with_foreign_key(:user_id) }
+  #   it { expect(@user).to have_many(:events).through(:attendances) }
+  # end
 end
