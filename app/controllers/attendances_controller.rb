@@ -9,6 +9,6 @@ class AttendancesController < ApplicationController
   end
 
   def create
-
+    @event = Event.find(params[:event_id])
   end
 end
