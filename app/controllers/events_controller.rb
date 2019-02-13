@@ -74,8 +74,9 @@ class EventsController < ApplicationController
 
     def end_date
       @event = Event.find(params[:id])
-      ((@event.duration / 60)+0.5).to_i= time
-      @event.start_date.add
+      ((@event.duration / 60)+0.5).to_i = k
+      end_daate = @event.start_date + k.hour
+      return end_daate
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
