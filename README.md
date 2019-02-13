@@ -16,7 +16,7 @@ To create an attendance type this on your rails console: `a = Attendance.create(
 
 ## Content
 
-In this repo you'll find an the liter version of "EventBrite": [EvenLite](https://event-lite1.herokuapp.com)
+In this repo you'll find the liter version of "EventBrite": [EvenLite](https://event-lite1.herokuapp.com)
 
 ## Here is the meme
 
