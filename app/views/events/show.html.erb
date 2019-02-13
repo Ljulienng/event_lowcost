@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
 
 
 <div class="card text-center" style="width: 18rem;">
@@ -14,5 +12,15 @@
     <p class="card-text"><u>Location</u> : <%= @event.location %></p>
     <p class="card-text"><u>Price</u> : <%= @event.price %></p>
     <p class="card-text"><%= @event.description %></p>
+  </div>
+  <div class = "card-footer">
+    <% if current_user.id == Event.find(params[:id]).admin.id %>
+     <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-success"%> |
+     <%= link_to 'Back', events_path, class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'Back', events_path, class: 'btn btn-primary' %>
+    <% end %>
+
+ 
   </div>
 </div>
