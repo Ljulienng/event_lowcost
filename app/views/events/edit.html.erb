@@ -1,6 +1,66 @@
-<h1>Editing Event</h1>
 
-<%= render 'form', event: @event %>
+<div class="alert alert-danger" role="alert">
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+  <% if @event.errors.any? %>
+    <p>Event could not be created for the following reasons :</p>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+</div>
+
+
+
+<body>
+
+
+
+<div class="card w-75">
+  <div class = "card-header">
+    <h1 style="text-align: center">Edit Event</h1>
+  </div>
+  <div class="card-body">
+     <%= form_for @event, url: {action: 'update'}, method: "patch" do |event| %>
+
+      <%= label_tag 'Title' %>
+      <%= event.text_field :title, :class => "form-control", placeholder: @event.title %>
+      <br />
+
+      <%= label_tag 'Description' %>
+      <%= event.text_field :description, :class => "form-control", placeholder: @event.description %>
+      <br />
+
+      <%= label_tag 'Location' %>
+      <%= event.text_field :location, :class => "form-control", placeholder: @event.location %>
+      <br />
+
+      <%= label_tag 'Start date' %>
+      <%= event.text_field :start_date, :class => "form-control", placeholder: @event.start_date %>
+      <br />
+
+      <%= label_tag 'Duration' %>
+      <%= event.text_field :duration, :class => "form-control", placeholder:@event.duration %>
+      <br />
+
+      <%= label_tag 'Price' %>
+      <%= event.text_field :price, :class => "form-control", placeholder: @event.price %>
+      <br /> <br />
+
+      <%= submit_tag "Edit event", :class => "btn btn-dark" %>
+
+    <% end %>
+  </div>
+</div>
+
+</body>
+
+
+
+<div class="card text-center auto-align" style="width: 18rem;">
+  <div class="card-body">
+    <p class="card-text"><%= link_to 'Show', @event %> | <%= link_to 'Back', events_path %></p>
+    </div>
+    </div>

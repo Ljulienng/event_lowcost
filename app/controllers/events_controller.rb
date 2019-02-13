@@ -23,6 +23,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
   end
 
   # POST /events
@@ -65,7 +66,7 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 
 
   private
