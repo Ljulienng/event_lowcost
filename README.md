@@ -1,4 +1,4 @@
-# DAY26: EvenBetterEventBrite
+# EvenLite
 ## Made by Julien and Maxence :smiley:
 ## How to use
 
@@ -16,7 +16,7 @@ To create an attendance type this on your rails console: `a = Attendance.create(
 
 ## Content
 
-In this repo you'll find an even better version of EventBrite (When the UI will be done)
+In this repo you'll find the liter version of "EventBrite": [EvenLite](https://event-lite1.herokuapp.com)
 
 ## Here is the meme
 
