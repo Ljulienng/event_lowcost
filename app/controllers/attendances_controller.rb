@@ -25,7 +25,7 @@ class AttendancesController < ApplicationController
       :currency    => 'eur'
     )
 
-    Attendance.create(participant: current_user, event: Event.find(params[:event_id]), stripe_customer_id: params[:stripeToken])
+    Attendance.create(user: current_user, event: Event.find(params[:event_id]), stripe_customer_id: params[:stripeToken])
 
     redirect_to event_path(params[:event_id])
 
