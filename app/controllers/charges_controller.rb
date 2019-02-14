@@ -1,4 +1,7 @@
 class ChargesController < ApplicationController
+	before_action :set_event
+	after_action :create_attendance, only: [:create]
+
 
 	def new
 	end
@@ -19,8 +22,21 @@ class ChargesController < ApplicationController
 	    :currency    => 'usd'
 	  )
 
+
+
 	rescue Stripe::CardError => e
 	  flash[:error] = e.message
 	  redirect_to new_charge_path
 	end
+
+	def create_attendance
+    @event = Event.find(params[:event_id])
+    Attendance.create!(user: current_user, event: @event, stripe_customer_id: @customer.id)
+  end
+
+	private
+
+	def set_event
+   @event = Event.find(params[:event_id])
+  end
 end
