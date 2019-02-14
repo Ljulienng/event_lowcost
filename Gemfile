@@ -7,7 +7,8 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.2.1'
 gem 'bootstrap-sass'
 gem 'stripe'
-
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
