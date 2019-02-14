@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
 	  )
 
 	  charge = Stripe::Charge.create(
-	    :customer    => customer.id,
+	    :customer    => @customer.id,
 	    :amount      => @amount,
 	    :description => 'Rails Stripe customer',
 	    :currency    => 'usd'
@@ -31,7 +31,7 @@ class ChargesController < ApplicationController
 
 	def create_attendance
     @event = Event.find(params[:event_id])
-    Attendance.create!(user: current_user, event: @event, stripe_customer_id: params[:stripeToken])
+    Attendance.create!(user: current_user, event: @event, stripe_customer_id: @customer.id)
   end
 
 	private
