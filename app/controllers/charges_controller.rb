@@ -31,7 +31,7 @@ class ChargesController < ApplicationController
 
 	def create_attendance
     @event = Event.find(params[:event_id])
-    Attendance.create!(user: current_user, event: @event, stripe_customer_id: @customer.id)
+    Attendance.create!(user: current_user, event: @event, stripe_customer_id: params[:stripeToken])
   end
 
 	private
