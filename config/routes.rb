@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+
   resources :events do
   	resources :attendances
   	resources :charges
+  end
+  namespace :admins do
+    resources :admin, only: [:index]
+    resources :users
+    resources :attendances
+    resources :events
+    root to: "admin#index"
   end
 	root 'events#index'
   get 'home/index'

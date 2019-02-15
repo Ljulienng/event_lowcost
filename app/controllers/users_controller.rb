@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     def correct_user 
       unless current_user.id.to_i == params[:id].to_i
-        redirect_to rooth_path
+        redirect_to root_path
       end
     end
 

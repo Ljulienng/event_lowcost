@@ -37,14 +37,40 @@
                     <%= link_to "Secret page", home_secret_path, :class => "dropdown-item"  %>
                     <%= link_to "Edit email / password", edit_user_registration_path, :class => "dropdown-item"%>
                     <%= link_to "Profile", user_path(current_user.id), :class => "dropdown-item"%>
+                      <% if current_user.try(:admin?) %>
+                        <%= link_to "Admin dashboard", admins_root_path, class: "dropdown-item" %>
+                      <% end %>
                   <% else %>
                       <%= link_to "Sign in", new_user_session_path, :class => "dropdown-item" %>
-                      <%= link_to "Sign up", new_user_registration_path, :class => "dropdown-item" %>
+                      <%= link_to "Sign up", new_user_registration_path , :class => "dropdown-item" %>
                   <% end %>
                 </div>
             </div>
         </div>
     </nav>
+
+
+    <!-- messages d'erreurs et d'information -->
+    <% if flash.now[:notice] %>
+    <div class="alert alert-success mt-5" style="position:absolute;top:5em;">
+      <div class="notice">
+        <%= flash.now[:notice] %>
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <% end %>
+    <% if flash.now[:danger] %>
+    <div class="alert alert-success mt-5" style="position:absolute;top:5em;">
+      <div class="danger">
+        <%= flash.now[:danger] %>
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <% end %>
 
 
 
@@ -53,7 +79,6 @@
     <footer>
       <div class="row" style="margin-top: 15vh; margin-bottom: 5vh">
         <div class="col">
-          <hr/>
           <h6 class="montserrat-light text-center"> Made by Julien & Maxence </h6>
         </div>
       </div>

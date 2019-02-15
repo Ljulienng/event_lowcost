@@ -6,9 +6,9 @@ class User < ApplicationRecord
 	after_create :welcome_send
 
 
-	has_many :attendances
-	has_many :events, through: :attendances
-  has_many :events_created, foreign_key: 'admin_id', class_name: "Event"
+	has_many :attendances, dependent: :destroy
+	has_many :events, through: :attendances, dependent: :destroy
+  has_many :events_created, foreign_key: 'admin_id', class_name: "Event", dependent: :destroy
 
 
 	def welcome_send
