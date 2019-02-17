@@ -32,7 +32,7 @@
       <h5 class="card-title"><%= @user.first_name + " " + @user.last_name%></h5>
       <h6 class="card-subtitle"><u><%=@user.email%></u></h6>
       <p class="card-text"><%=@user.description%></p>
-      <%= link_to "Edit Profile", edit_user_path, :class => "btn btn-primary"%>
+      <%= link_to "Edit Profile", edit_admins_user_path(params[:id]), :class => "btn btn-primary"%>
     </div>
   </div>
   <h2><u><strong>Events Created</strong></u></h2>
