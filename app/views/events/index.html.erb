@@ -47,50 +47,5 @@
 
 
 
-<div class="d-flex justify-content-center">
-  <section class="w-75 table-responsive">
-    <table id="test" class="table table-bordered table-hover ">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Organizer <i class="fas fa-sort ml-2"></i></th>
-          <th scope="col">Start date <i class="fas fa-sort ml-2"></i></th>
-          <th scope="col">Title <i class="fas fa-sort ml-2"></i></th>
-          <th scope="col" class="text-center">Participants<i class="fas fa-sort ml-2"></th>
-          <th scope="col" class="text-center"><i class="fas fa-sort ml-2"></th>
-        </tr>
-      </thead>
-      <tbody >
-      <% Event.all.each do |event| %>
-        <tr>
-          <th scope="row" data-defaultsign="month" data-sortcolumn="1" data-sortkey="1-1"><%= event.id %></th>
-
-          <td><%= link_to "#{event.admin.first_name}"%></td>
-
-          <td><%= event.start_date %></td>
-
-          <td class="font-italic">
-            <a href="<%= event_path(event.id) %>"><%= event.title %></a> 
-          </td>
-
-          <td  class="text-center">
-              <a class="text-decoration-none" href="<%= event_path(event.id) %>"><%= event.attendances.count%> <i class="far fa-user "></i></a> 
-          </td>  
-
-          <td  class="text-center">
-              <a class="text-decoration-none" href="<%= event_path(event.id) %>"><i class="far fa-eye"></i></a> 
-              <% if user_signed_in? && current_user.id == event.admin.id %>
-              <a  href="<%= edit_event_path(event.id) %>"><i class="mr-3 ml-3 fas fa-pencil-alt"></i> </a>
-              <a href="<%= event_path(event.id) %>" data-confirm="Etes-vous sûr ?" data-method="DELETE"><i class="fas fa-trash-alt"></i></a>
-              <% else %>
-              <% end %>
-          </td>
-        </tr>
-      <% end %>
-
-      </tbody>
-    </table>
-
-  </section>
-</div>
+<%= render 'event_list' %>
 
