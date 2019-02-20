@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_110930) do
+ActiveRecord::Schema.define(version: 2019_02_17_195432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_02_15_110930) do
     t.integer "price"
     t.string "location"
     t.bigint "admin_id"
+    t.boolean "validated"
     t.index ["admin_id"], name: "index_events_on_admin_id"
   end
 

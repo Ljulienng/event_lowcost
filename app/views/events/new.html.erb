@@ -8,15 +8,15 @@
         <% end %>
       </ul>
     <% end %>
-    
+
   </div>
 
 
 
-<body>  
+<body>
 
 
-  
+
   <div class="card w-75">
   	<div class = "card-header">
   		<h1 style="text-align: center">New Event</h1>
@@ -48,6 +48,8 @@
         <%= event.text_field :price, :class => "form-control", placeholder: "price (maximum: 1000$)" %>
         <br /> <br />
 
+        <%= event.file_field_tag :image %>
+
         <%= submit_tag "Create event", :class => "btn btn-dark" %>
 
       <% end %>
@@ -55,4 +57,3 @@
   </div>
 
 </body>
-

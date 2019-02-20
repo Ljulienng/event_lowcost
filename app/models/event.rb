@@ -3,6 +3,7 @@ class Event < ApplicationRecord
 	belongs_to :admin, class_name: "User",optional: true
 	has_many :attendances
 	has_many :users, through: :attendances
+	has_one_attached :avatar
 
 
 	validates :start_date, presence: true
@@ -31,7 +32,7 @@ class Event < ApplicationRecord
 	validates :location, presence: true
 
 
-	private 
+	private
 
   def multiple_of_5
   	errors.add(:duration, "must be a mutiple of 5") unless self.duration.to_i % 5 == 0

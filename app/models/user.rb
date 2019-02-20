@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 	after_create :welcome_send
+  has_one_attached :avatar
 
 
 	has_many :attendances, dependent: :destroy
@@ -18,12 +19,12 @@ class User < ApplicationRecord
 	def reset_password_instructions
 		UserMailer.reset_password_instructions(self).deliver_now
 	end
-		
+
 	def is_participant?(event)
 		attendances = Attendance.where(event_id: event.id)
 		attendances.each do |attendance|
 			if self.id.to_i == attendance.user_id.to_i
-				return true			
+				return true
 			end
 		end
 			return false
