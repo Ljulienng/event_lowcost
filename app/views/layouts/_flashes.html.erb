@@ -1,0 +1,21 @@
+    <!-- messages d'erreurs et d'information -->
+    <% if flash.now[:notice] %>
+    <div class="alert alert-success mt-5" style="position:absolute;top:5em;">
+      <div class="notice">
+        <%= flash.now[:notice] %>
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <% end %>
+    <% if flash.now[:danger] %>
+    <div class="alert alert-success mt-5" style="position:absolute;top:5em;">
+      <div class="danger">
+        <%= flash.now[:danger] %>
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <% end %>
