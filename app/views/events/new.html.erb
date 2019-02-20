@@ -22,8 +22,10 @@
   		<h1 style="text-align: center">New Event</h1>
   	</div>
     <div class="card-body">
-       <%= form_for @event, url: {action: 'create'} do |event| %>
-
+       <%= form_for @event, url: {action: 'create'}, method: 'post', multipart: true do |event| %>
+        <%= label_tag 'Picture' %>
+        <%= event.file_field :image %>
+        </br>
         <%= label_tag 'Title' %>
         <%= event.text_field :title, :class => "form-control", placeholder: "Title of the event" %>
         <br />
@@ -48,7 +50,7 @@
         <%= event.text_field :price, :class => "form-control", placeholder: "price (maximum: 1000$)" %>
         <br /> <br />
 
-        <%= event.file_field_tag :image %>
+
 
         <%= submit_tag "Create event", :class => "btn btn-dark" %>
 

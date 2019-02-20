@@ -33,6 +33,7 @@
       <h6 class="card-subtitle"><u><%=@user.email%></u></h6>
       <p class="card-text"><%=@user.description%></p>
       <%= link_to "Edit Profile", edit_user_path, :class => "btn btn-primary"%>
+      | <%= link_to "Upload Avatar", user_avatars_path(@user.id), method: 'post', :class => "btn btn-primary"%>
     </div>
   </div>
   <h2><u><strong>Events Created</strong></u></h2>

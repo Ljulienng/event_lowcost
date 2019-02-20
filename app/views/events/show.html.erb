@@ -4,6 +4,12 @@
 
 <div class="card text-center" style="width: 18rem;">
     <h1 class="card-header"><%= @event.title %></h1>
+    <% if @event.image.attached? %>
+    <%= image_tag @event.image, alt: "image", class: "card-img-top" %>
+    <img class="card-img-top" src="<%=@event.image %>" alt="Card image cap">
+    <% else %>
+    <p>il n"y pas d'image</p>
+    <% end %>
   <div class="card-body">
     <p class="card-text"><u>Number of guests</u> : <%= @event.users.count %></p>
     <p class="card-text"><u>email</u> : <%= User.find(@event.admin_id).email %></p>
@@ -18,12 +24,12 @@
     <%= link_to 'Back', events_path, class: 'btn btn-primary' %> |
 
     <% if current_user.id == Event.find(params[:id]).admin.id %>
-     <%= link_to 'Event space', event_attendances_path(params[:id]), class: "btn btn-success"%> 
+     <%= link_to 'Event space', event_attendances_path(params[:id]), class: "btn btn-success"%>
     <% elsif current_user.is_participant?(@event)%>
     <% else %>
       <%= link_to "Join the event", new_event_attendance_path(params[:id]), :class => "btn btn-info" %>
-        
-    <% end %> 
+
+    <% end %>
 
 
   </div>

@@ -23,7 +23,11 @@
     <h1 style="text-align: center">Edit Event</h1>
   </div>
   <div class="card-body">
-     <%= form_for @event, url: {action: 'update'}, method: "patch" do |event| %>
+     <%= form_for @event, url: {action: 'update'}, method: "patch", multipart: true do |event| %>
+
+     <%= label_tag 'Picture' %>
+     <%= event.file_field :image %>
+     </br>
 
       <%= label_tag 'Title' %>
       <%= event.text_field :title, :class => "form-control", placeholder: @event.title %>

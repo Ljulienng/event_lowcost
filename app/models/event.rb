@@ -3,7 +3,7 @@ class Event < ApplicationRecord
 	belongs_to :admin, class_name: "User",optional: true
 	has_many :attendances
 	has_many :users, through: :attendances
-	has_one_attached :avatar
+	has_one_attached :image
 
 
 	validates :start_date, presence: true

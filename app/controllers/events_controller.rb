@@ -30,13 +30,17 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.image.attach(params[:image])
     @event.admin = current_user
 
     respond_to do |format|
-      if @event.save
+      if @event.save && @event.image.attached?
         format.html { redirect_to event_path(@event.id), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
+          if @event.image.attached?
+            flash[:danger] = "No image"
+          end
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -48,6 +52,10 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        if (params[:images]) != nil
+          @event.image.attach(params[:image])
+        end
+
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
